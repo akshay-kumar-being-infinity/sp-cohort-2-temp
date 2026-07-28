@@ -41,3 +41,12 @@ body {
 .card img {
     width: 100%;
 }
+
+.card button {
+    width: 80%;
+    padding: 8px;
+    border-radius: 20px;
+    border-style: none;
+    margin-bottom: 20px;
+    cursor: pointer;
+}

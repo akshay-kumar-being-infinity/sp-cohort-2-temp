@@ -1,3 +1,27 @@
 h1{
-    color: brown;
+    color: blue;
+}
+
+.navbar {
+    border-width: 2px;
+    border-color: grey;
+    border-style: solid;
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+}
+
+.navbar a {
+    padding: 20px;
+    text-decoration: none;
+    color: grey;
+}
+
+body {
+    margin: 0px;
+    background-color: aquamarine
+}
+
+.navbar a:hover {
+    color: black;
 }

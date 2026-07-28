@@ -25,3 +25,19 @@ body {
 .navbar a:hover {
     color: black;
 }
+
+.card {
+    border: 2px solid grey;
+    width: 350px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: white;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.card img {
+    width: 100%;
+}

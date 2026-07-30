@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Random User</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/pages/toggle.html">Toggle</a>
+        <a href="/pages/randomUser.html">Random User (External)</a>
+        <a href="/pages/myRandomUser.html">My Random User</a>
+    </div>
+
+    <div class="card">
+        <img src="/images/john.png" alt="User image" id="user-image">
+        <h3 id="user-name">John Doe</h3>
+        <p id="user-gender">Male</p>
+        <!--
+            Day 4 Exercise:
+            This button calls OUR OWN backend API instead of an external one.
+            URL: GET /api/users/random
+            Previously: we called https://randomuser.me/api (external)
+            Now:        we call   /api/users/random         (our own Spring Boot server)
+        -->
+        <button onclick="getMyRandomUser()">Get My Random User</button>
+    </div>
+
+    <script>
+        function getMyRandomUser() {
+            var userName   = document.getElementById("user-name");
+            var userGender = document.getElementById("user-gender");
+            var userImage  = document.getElementById("user-image");
+
+            // Calling OUR OWN backend API
+            // Since the frontend is served from the same server (localhost:8080),
+            // we can use a relative URL — no need for the full domain!
+            fetch("/api/users/random")
+                .then(function(res) {
+                    return res.json();
+                })
+                .then(function(user) {
+                    // Our API returns: { id, name, gender, image }
+                    // Compare this to randomuser.me which returned: { results[0].name.first, ... }
+                    userName.innerHTML   = user.name;
+                    userGender.innerHTML = user.gender;
+                    userImage.src        = user.image;
+                })
+                .catch(function(err) {
+                    console.log("Error: " + err);
+                });
+        }
+    </script>
+</body>
+</html>
